@@ -93,8 +93,6 @@ h3{
     justify-content: center;
 }
 .tube>div{
-    width: 19px;
-    height: 19px;
     border-radius: 50%;
     background-color:blue;
     animation-name: boul;
@@ -105,12 +103,7 @@ h3{
     position: absolute;
 }
 @keyframes boul {
-    0%   {top:0;box-shadow:none;}
-    20%  {top:143px; box-shadow:none; }
     40%  {top:64px;box-shadow:none;}
-    60%  {top:143px;box-shadow:none;}
-    80%  {top:74px;box-shadow:none;}
-    100% {top:143px;box-shadow:none;}
 }
 /*________Loader______*/
 .boule{
@@ -149,7 +142,6 @@ h3{
 /*_______carre qui Faites la queue________*/
 .course{
     position: relative;
-    /* box-shadow: 10px 5px 50px black inset;*/
 }
 .course div {
     position: absolute;
