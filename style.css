@@ -1,0 +1,349 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh; /* 100% de la hauteur de la fenêtre (viewport) */
+    width: 100%;
+}
+article{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+section{
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+
+}
+.anim2>div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 556px;
+    height: 222px;
+    background-color: darkgrey;
+    border-radius:10px;
+    margin: 5px;
+}
+h3{
+    margin-top:10px
+}
+#queue{
+    height: 453px;
+}
+/*--- *  section1  *__*/
+
+.menu h2{
+    color: white;
+    padding: 5px;
+    margin-top: 0;
+    cursor: pointer;
+    position:absolute;
+    top: 0;
+}
+.menu{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 35px;
+    border-radius: 5px;
+    margin: 5px;
+    background-color:black;
+    position: relative;
+    transition: height 5s;
+}
+.menu:hover{
+    height:500px;
+}
+/*--*  section2  *__*/
+
+/*carré qui tourne */
+.carre{
+    width: 70px;
+    height: 70px;
+    margin-top:38px;
+    background-color:yellow;
+    animation-name: carretransform;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+    transition: background-color 2s, transform 3s ;
+}
+@keyframes carretransform {/* changement de couleur   */
+    from {background-color: yellow;}
+    to {background-color: red; transform: rotate(540deg);} /*---la rotation*/
+}
+/* Balle qui rebondit jusqu'a s'arrete */
+.tube{
+    width: 40px;
+    height: 164px;
+    margin-top:11px;
+    background-color:transparent;
+    border: 1px solid blue;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+.tube>div{
+    width: 19px;
+    height: 19px;
+    border-radius: 50%;
+    background-color:blue;
+    animation-name: boul;
+    animation-duration: 4s;/* la dureé de l'animation*/
+    animation-timing-function: linear;
+    animation-iteration-count: infinite; /* tourne en boucle */
+    transition: background-color 1s ;
+    position: absolute;
+}
+@keyframes boul {
+    0%   {top:0;box-shadow:none;}
+    20%  {top:143px; box-shadow:none; }
+    40%  {top:64px;box-shadow:none;}
+    60%  {top:143px;box-shadow:none;}
+    80%  {top:74px;box-shadow:none;}
+    100% {top:143px;box-shadow:none;}
+}
+/*________Loader______*/
+.boule{
+    box-sizing:content-box;
+    display: flex;
+    flex-direction: row;
+    margin-top: 17px;
+}
+.boule>div{
+    margin: 2px;
+    width: 74px;
+    height: 74px;
+    border-radius: 50%;
+    background-color:white;
+    border: 1px solid black;
+    animation-name: cercle;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    transition: background-color 2s;
+}
+.boule div:nth-child(1){
+    animation-delay: 1s;
+}
+.boule div:nth-child(2){
+    animation-delay: 2s;
+}
+.boule div:nth-child(3){
+    animation-delay: 3s;
+}
+@keyframes cercle {
+    0%   {background-color: black}
+    50%  {background-color:lightslategrey;}
+    100%  {background-color: white;}
+}
+/*--*  section3  *_____*/
+/*_______carre qui Faites la queue________*/
+.course{
+    position: relative;
+    /* box-shadow: 10px 5px 50px black inset;*/
+}
+.course div {
+    position: absolute;
+    animation-name: course, rotation, colorChange;
+    animation-duration: 15s, 2s, 7s; /* Durée des animations */
+    animation-iteration-count: infinite, infinite, infinite; /* Répéter les animations */
+    animation-timing-function: linear, linear, linear;
+    top: 0;
+    left: 0;
+    color: #63E6BE;
+    transition: color 3s;
+}
+.min-carre1{
+    background-color: #d42b4d;
+    width: 20px;
+    height: 20px;
+    animation-delay: 1s;
+}
+.min-carre2{
+    background-color: #FFD43B;
+    width: 20px;
+    height: 20px;
+    animation-delay: 2s;
+}
+.min-carre3{
+    background-color: darkgreen;
+    width: 20px;
+    height: 20px;
+    animation-delay: 3s;
+}
+.min-carre4{
+    background-color: violet;
+    width: 20px;
+    height: 20px;
+    animation-delay: 4s;
+}
+.min-carre5{
+    background-color: #974e2b;
+    width: 20px;
+    height: 20px;
+    animation-delay: 5s;
+}
+
+/* Animation de déplacement  */
+@keyframes course {
+    0% {
+        top: 0;
+        left: 0;/* position initial */
+    }
+    8% {
+        top: 0;
+        left: 96%; /* Déplacement à droite */
+    }
+    50% {
+        top: 89%; /* Déplacement en bas à droite */
+        left: 96%;
+
+    }
+    75% {
+        top: 92%; /* Déplacement en bas à gauche */
+        left: 0;
+    }
+    100% {
+        top: 0;
+        left: 0; /* Retour au départ */
+    }
+}
+
+/* Animation de rotation */
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Animation pour le  changement de couleur  */
+@keyframes colorChange {
+    0% { color: #FFD43B; }
+    25% { color: #d42b4d; }
+    50% { color: #63E6BE; }
+    75% { color: #5533d1; }
+    100% { color: #B197FC; }
+}
+/* Animation 3D des cercles */
+.Anim-cercle {
+    perspective: 1000px; /* Ajoute de la perspective 3D */
+    display: flex;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: rotate_anim 25s infinite linear;
+}
+
+.Anim-cercle .cercle div {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.Anim-cercle .cercle div:nth-child(1) {
+    background-color: red;
+    transform: rotateY(0deg) translateZ(50px);
+}
+
+.Anim-cercle .cercle div:nth-child(2) {
+    background-color: blue;
+    transform: rotateY(40deg) translateZ(50px);
+}
+
+.Anim-cercle .cercle div:nth-child(3) {
+    background-color: orange;
+    transform: rotateY(80deg) translateZ(50px);
+}
+
+.Anim-cercle .cercle div:nth-child(4) {
+    background-color: lightblue;
+    transform: rotateY(120deg) translateZ(50px);
+}
+
+.Anim-cercle .cercle div:nth-child(5) {
+    background-color: green;
+    transform: rotateY(160deg) translateZ(50px);
+}
+
+.Anim-cercle .cercle div:nth-child(6) {
+    background-color: purple;
+    transform: rotateY(200deg) translateZ(50px);
+}
+
+.Anim-cercle .cercle div:nth-child(7) {
+    background-color: pink;
+    transform: rotateY(240deg) translateZ(50px);
+}
+
+.Anim-cercle .cercle div:nth-child(8) {
+    background-color: yellow;
+    transform: rotateY(280deg) translateZ(50px);
+}
+
+.Anim-cercle .cercle div:nth-child(9) {
+    background-color: brown;
+    transform: rotateY(320deg) translateZ(50px);
+}
+
+/* Animation pour la rotation des cercles */
+@keyframes rotate_anim {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+/* Animation du mouvement de l'Anim-cercle autour d'un point */
+#queue {
+    position: relative;
+}
+
+.Anim-cercle {
+    position: absolute;
+    top: 193px;
+    left: 59px;
+    animation: rotate_around 10s infinite ease-in-out;
+}
+
+@keyframes rotate_around {
+    0% {
+        top: 193px;
+        left: 59px;
+        transform: rotate(0deg);
+    }
+    25% {
+        top: 50px;
+        left: 250px;
+        transform: rotate(90deg); /* Pivoter autour d'un point */
+        transform-origin: 50% 100%;
+    }
+    50% {
+        top: 193px;
+        left: 489px;
+        transform: rotate(180deg);
+    }
+    75% {
+        top: 386px;
+        left: 250px;
+        transform: rotate(270deg);
+    }
+    100% {
+        top: 193px;
+        left: 59px;
+        transform: rotate(360deg);
+    }
+}
